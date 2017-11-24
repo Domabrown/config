@@ -106,18 +106,25 @@ else
  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\$ '
 fi
 
-#emacs alias'
-alias e='emacs'
-#cd backwards
+
+### Aliases ###
 alias ..='cd ..'
 alias ...='cd ../../../'
 alias ....='cd ../../../../'
 alias .....='cd ../../../../'
 alias .4='cd ../../../../'
 alias .5='cd ../../../../..'
-#start virtual envirnment for django project
 alias dvenv='source ~/virtpy/dvenv/bin/activate'
-#emacs read only
+### Functions ###
 ev() {
-  emacs "$1" --eval '(setq buffer-read-only t)'
+    emacs $@ & "$1" --eval '(setq buffer-read-only t)' ;
 }
+
+ed() {
+  emacs $@ &
+}
+
+#  bash_aliases
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
