@@ -124,6 +124,10 @@ ed() {
   emacs $@ &
 }
 
+function cd {
+    builtin cd "$@" && ls 
+    }
+
 #  bash_aliases
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
