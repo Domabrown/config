@@ -115,9 +115,11 @@ alias .....='cd ../../../../'
 alias .4='cd ../../../../'
 alias .5='cd ../../../../..'
 alias dvenv='source ~/virtpy/dvenv/bin/activate'
+alias emacs="emacs -nw"
+
 ### Functions ###
 ev() {
-    emacs $@ & "$1" --eval '(setq buffer-read-only t)' ;
+    emacs "$1" --eval '(setq buffer-read-only t)' ;
 }
 
 ed() {
