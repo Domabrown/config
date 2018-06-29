@@ -1,7 +1,7 @@
- ;; Added by Package.el.  This must come before configurations of
- ;; installed packages.  Don't delete this line.  If you don't want it,
- ;; just comment it out by adding a semicolon to the start of the line.
- ;; You may delete these explanatory comments.
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
 (package-initialize)
 
  ;; Add MELPA repository.
@@ -23,7 +23,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (wheatgrass)))
- '(package-selected-packages (quote (which-key auto-correct))))
+ '(package-selected-packages (quote (elpy which-key auto-correct))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -50,7 +50,7 @@
 ;; replace highlited text
 (delete-selection-mode 1)
 ;; start emacs server
-(server-start)
+;;(server-start)
 ;; show buffer name not hostname
 (setq-default frame-title-format
               '(:eval
@@ -67,3 +67,9 @@
                           (concat "{" dired-directory "}"))
                          (t
                           "[no file]")))))
+
+;; standup in flyspell-mode
+(add-hook 'text-mode-hook (lambda () (flyspell-buffer)))
+
+;; mouse mode in -nw
+(xterm-mouse-mode 1)
