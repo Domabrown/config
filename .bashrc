@@ -35,14 +35,12 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# set a fancy prompt (non-color, unless we know we "want" color)
+# set a fancy prompt 
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
+# force colour
 force_color_prompt=yes
 
 
@@ -115,17 +113,18 @@ alias .....='cd ../../../../'
 alias .4='cd ../../../../'
 alias .5='cd ../../../../..'
 alias dvenv='source ~/virtpy/dvenv/bin/activate'
-alias emacs="emacs -nw"
+alias emacz="emacs -nw"
 
-### Functions ###
+# Open emacs in view only buffer
 ev() {
-    emacs "$1" --eval '(setq buffer-read-only t)' ;
+  emacs "$1" --eval '(setq buffer-read-only t)' ;
 }
 
 ed() {
   emacs $@ &
 }
 
+# Function to do ls after cd
 function cd {
     builtin cd "$@" && ls 
     }
@@ -134,3 +133,10 @@ function cd {
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
+# emacs server setup
+export ALTERNATE_EDITOR=emacs EDITOR=emacsclient VISUAL=emacsclient
+
+
+# Path
+export PATH=${PATH}:~/.local/bin
